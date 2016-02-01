@@ -29,10 +29,10 @@ import creds
 
 
 PRODUCTS = [
-	#'B0199EW96U', # Year In White: Kindle
-	#'0813571200', # Year In White: Hardcover
-	#'0813571197', # Year In White: Paperback
-	#'1573980420', # April Fools RFCs: Paperback
+	'B0199EW96U', # Year In White: Kindle
+	'0813571200', # Year In White: Hardcover
+	'0813571197', # Year In White: Paperback
+	'1573980420', # April Fools RFCs: Paperback
 	'B00N7N2CRQ', # The Practice of Cloud: Kindle
 	'032194318X', # The Practice of Cloud: Paperback
 	'B004JLMUJ0', # The Practice of Sysadmin: Kindle
@@ -70,9 +70,17 @@ def GetProductRanks(product_codes):
   product_codes: A list of asin codes.
   Returns a dict of asin: sales_rank.
   """
+  result = {}
+  for x in range(0, len(product_codes), 10):
+    result.update(Get10ProductRanks(product_codes[x:x+10]))
+  return result
+
+def Get10ProductRanks(product_codes):
+  """Amazon only permits 10 codes at a time."""
   amazon = AmazonAPI(creds.AMAZON_ACCESS_KEY, creds.AMAZON_SECRET_KEY, creds.AMAZON_ASSOC_TAG)
   products = amazon.lookup(ItemId=','.join(product_codes))
   return dict((x.asin, int(x.sales_rank)) for x in products)
+
 
 def StoreProductRank(service, project_id, asin, sales_rank):
   """
