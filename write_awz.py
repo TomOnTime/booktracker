@@ -1,18 +1,5 @@
 #!/usr/bin/python
-"""Writes and reads a lightweight custom metric.
-
-This is an example of how to use the Google Cloud Monitoring API to write
-and read a lightweight custom metric. Lightweight custom metrics have no
-labels and you do not need to create a metric descriptor for them.
-
-Prerequisites: Run this Python example on a Google Compute Engine virtual
-machine instance that has been set up using these intructions:
-https://cloud.google.com/monitoring/demos/setup_compute_instance.
-
-Typical usage: Run the following shell commands on the instance:
-    python write_lightweight_metric.py
-    python write_lightweight_metric.py
-    python write_lightweight_metric.py
+"""Records ASIN SalesRank and uploads to Google Monitoring
 """
 
 import os
@@ -32,18 +19,21 @@ PRODUCTS = [
 	'B0199EW96U', # Year In White: Kindle
 	'0813571197', # Year In White: Paperback
 	'0813571200', # Year In White: Hardcover
-	'1573980420', # April Fools RFCs: Paperback
-	'B00N7N2CRQ', # The Practice of Cloud: Kindle
 	'032194318X', # The Practice of Cloud: Paperback
-	'B004JLMUJ0', # The Practice of Sysadmin: Kindle
+	'B00N7N2CRQ', # The Practice of Cloud: Kindle
 	'0321492668', # The Practice of Sysadmin: Paperback
-	'B0026OR2WM', # Time Mgmt for Sysadmins: Kindle
+	'B004JLMUJ0', # The Practice of Sysadmin: Kindle
 	'0596007833', # Time Mgmt for Sysadmins: Paperback
+	'B0026OR2WM', # Time Mgmt for Sysadmins: Kindle
+	'1573980420', # April Fools RFCs: Paperback
 	'B00AZRBLHO', # Phoenix Project: Kindle
 	'0988262509', # Phoenix Project: Paperback
 	'0988262592', # Phoenix Project: Hardcover
 	'B00VATFAMI', # Phoenix Project: Audible
+	'B016CJ5HUA', # Beyond Blame: Kindle
+	'1491906413', # Beyond Blame: Paperback
 ]
+
 
 CUSTOM_METRIC_NAME_BASE = "custom.cloudmonitoring.googleapis.com/amz_%s"
 
@@ -74,6 +64,7 @@ def GetProductRanks(product_codes):
   for x in range(0, len(product_codes), 10):
     result.update(Get10ProductRanks(product_codes[x:x+10]))
   return result
+
 
 def Get10ProductRanks(product_codes):
   """Amazon only permits 10 codes at a time."""
