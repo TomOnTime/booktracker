@@ -1,5 +1,10 @@
 #!/usr/bin/python
 """Records ASIN SalesRank and uploads to Google Monitoring
+
+TODO(tlim): Make a Monitor object that carries service,product_id.
+TODO(tlim): Currently the data is stored at a timestamp generated
+  when the data is being stored. Instead, record the time that
+  the data is gathered and use that to timestamp the data.
 """
 
 import os
