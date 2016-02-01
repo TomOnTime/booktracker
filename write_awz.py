@@ -29,8 +29,16 @@ import creds
 
 
 PRODUCTS = [
+	#'B0199EW96U', # Year In White: Kindle
+	#'0813571200', # Year In White: Hardcover
+	#'0813571197', # Year In White: Paperback
+	#'1573980420', # April Fools RFCs: Paperback
 	'B00N7N2CRQ', # The Practice of Cloud: Kindle
 	'032194318X', # The Practice of Cloud: Paperback
+	'B004JLMUJ0', # The Practice of Sysadmin: Kindle
+	'0321492668', # The Practice of Sysadmin: Paperback
+	'B0026OR2WM', # Time Mgmt for Sysadmins: Kindle
+	'0596007833', # Time Mgmt for Sysadmins: Paperback
 	'B00AZRBLHO', # Phoenix Project: Kindle
 	'0988262592', # Phoenix Project: Hardcover
 	'0988262509', # Phoenix Project: Paperback
