@@ -63,3 +63,4 @@ target/
 /keyrings/live/pubring.gpg~
 /keyrings/live/pubring.kbx~
 /keyrings/live/secring.gpg
+/gce/BookTracker-4581a9cde840.json
