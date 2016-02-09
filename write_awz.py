@@ -37,6 +37,7 @@ PRODUCTS = [
 	'B00VATFAMI', # Phoenix Project: Audible
 	'B016CJ5HUA', # Beyond Blame: Kindle
 	'1491906413', # Beyond Blame: Paperback
+  'B01B8UVMF2', # Artemis Seven: Worlds Within
 ]
 
 
