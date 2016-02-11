@@ -92,7 +92,6 @@ class GMonitor(object):
     service = self._service
     project_id = self._project_id
 
-    #now = '2005-01-01T00:00:00Z'
     now = GetNowRfc3339()
 
     print "Reading data from custom metric timeseries..."
@@ -100,16 +99,17 @@ class GMonitor(object):
         project=project_id,
         metric=CUSTOM_METRIC_NAME_BASE % (asin,),
         youngest=now)
-    #start = time.time()
-    start = 0
+    start = time.time()
     while True:
       try:
         read_response = read_request.execute()
-        #pprint.pprint(read_response)
+        print "HERE"
+        pprint.pprint(read_response)
+        print "HERE"
         for point in read_response["timeseries"][0]["points"]:
           yield point["end"], point["doubleValue"]
         if 'nextPageToken' in read_response:
-          print "WARNING: There is more data. We need to read other pages."
+          print "WARNING: There is more data. We need to implement nextPageToken."
         break
       except Exception as e:
         if time.time() < start + 20:
