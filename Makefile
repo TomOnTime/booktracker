@@ -2,9 +2,10 @@ all:
 
 install: push
 
+FILES=awzconfig.py  creds.py  dump_asin_timeseries.py  gmonitor.py  write_awz.py
+
 push:
-	cp write_awz.py creds.py ~/bin/.
+	cp $(FILES) ~/bin/.
 
 diff:
-	diff write_awz.py ~/bin/.
-	diff creds.py ~/bin/.
+	for i in $(FILES) ; do diff $$i ~/bin/. ; done
