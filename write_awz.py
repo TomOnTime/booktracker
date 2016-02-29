@@ -41,6 +41,9 @@ def main():
   for asin, rank in rankings.iteritems():
     print "WRITING", asin, rank
     gm.StoreProductRank(asin, rank)
+    # Gene: placeholder
+    # run salesrank_add.rb ASIN rank
+    subprocess.check_call(['bundle', 'exec', 'ruby', 'salesrank_add.rb', asin, rank])
 
 
 if __name__ == "__main__":
